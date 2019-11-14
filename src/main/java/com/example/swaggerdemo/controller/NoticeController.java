@@ -25,12 +25,12 @@ public class NoticeController {
 
 
     @ApiOperation(value="获取公告列表", notes="获取公告列表")
-    @RequestMapping(value = "notice/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "getNotices", method = RequestMethod.GET)
     @ApiImplicitParams({
             @ApiImplicitParam(name="userId",value="userId",paramType = "query",example="123")
 
     })
-    public ResponseEntity getCommonFunctions (Integer userId){
+    public ResponseEntity getNotices (Integer userId){
         JsonResult r = new JsonResult();
 
         r.setStatus("ok");

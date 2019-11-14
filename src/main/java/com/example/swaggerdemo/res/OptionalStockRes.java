@@ -8,6 +8,9 @@ public class OptionalStockRes {
     private String companyAbbr;
 
 
+    private Integer isOptional;
+
+
     public String getCompanyCode() {
         return companyCode;
     }
@@ -22,5 +25,14 @@ public class OptionalStockRes {
 
     public void setCompanyAbbr(String companyAbbr) {
         this.companyAbbr = companyAbbr;
+    }
+
+
+    public Integer getIsOptional() {
+        return isOptional;
+    }
+
+    public void setIsOptional(Integer isOptional) {
+        this.isOptional = isOptional;
     }
 }

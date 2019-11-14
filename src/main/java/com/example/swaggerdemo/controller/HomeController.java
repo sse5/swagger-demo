@@ -124,7 +124,7 @@ public class HomeController {
 
 
     @ApiOperation(value="获取用户常用功能接口", notes="根据用户id来获取用户常用功能接口")
-    @RequestMapping(value = "getCommonFunctions/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "getCommonFunctions", method = RequestMethod.GET)
     @ApiImplicitParams({
             @ApiImplicitParam(name="userId",value="id",paramType = "query",example="123")
 

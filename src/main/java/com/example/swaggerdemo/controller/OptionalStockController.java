@@ -26,7 +26,7 @@ public class OptionalStockController {
 
 
     @ApiOperation(value="获取自选股列表接口", notes="获取自选股接口")
-    @RequestMapping(value = "getoptionalStocks/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "getoptionalStocks", method = RequestMethod.GET)
     @ApiImplicitParams({
             @ApiImplicitParam(name="userId",value="userId",paramType = "query",example="123")
 
@@ -68,7 +68,7 @@ public class OptionalStockController {
      */
 
     @ApiOperation(value="批量删除自选股", notes="删除自选股")
-    @RequestMapping(value = "delete/{userId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "deleteStocks", method = RequestMethod.DELETE)
     @ApiImplicitParams({
             @ApiImplicitParam(name="userId",value="userId",paramType = "query",example="123"),
             @ApiImplicitParam(name="companyCode",value="公司Code",paramType = "query",example="688002，60000")
@@ -96,10 +96,11 @@ public class OptionalStockController {
     @ApiOperation(value="搜索自选股列表接口", notes="搜索自选股列表接口")
     @RequestMapping(value = "getSearchStocks/{keyword}", method = RequestMethod.GET)
     @ApiImplicitParams({
-            @ApiImplicitParam(name="keyword",value="搜索词",paramType = "query",example="上海")
+            @ApiImplicitParam(name="keyword",value="搜索词",paramType = "query",example="上海"),
+            @ApiImplicitParam(name="userId",value="userId",paramType = "query",example="123"),
 
     })
-    public ResponseEntity getSearchStocks (String keyword){
+    public ResponseEntity getSearchStocks (String keyword,Integer userId){
         JsonResult r = new JsonResult();
         List<OptionalStockRes> optionalStockResList  = new ArrayList<OptionalStockRes>();
         OptionalStockRes  stock1 = new OptionalStockRes();
@@ -114,6 +115,10 @@ public class OptionalStockController {
         stock2.setCompanyAbbr("上海凯宝");
         stock3.setCompanyAbbr("上海钢联");
         stock4.setCompanyAbbr("上海新阳");
+        stock1.setIsOptional(1);
+        stock2.setIsOptional(0);
+        stock3.setIsOptional(0);
+        stock4.setIsOptional(1);
         optionalStockResList.add(stock1);
         optionalStockResList.add(stock2);
         optionalStockResList.add(stock3);
@@ -137,7 +142,7 @@ public class OptionalStockController {
      */
 
     @ApiOperation(value="批量添加自选股", notes="批量添加自选股")
-    @RequestMapping(value = "addStocks/{userId}", method = RequestMethod.POST)
+    @RequestMapping(value = "addStocks", method = RequestMethod.POST)
     @ApiImplicitParams({
             @ApiImplicitParam(name="userId",value="userId",paramType = "query",example="123"),
             @ApiImplicitParam(name="companyCode",value="公司Code",paramType = "query",example="688002，60000")
