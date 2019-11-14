@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping(value = "/kcb/activity")
+@RequestMapping(value = "/app/activity")
 @Api(value = "ActivityController | 近期活动类")
 public class ActivityController {
 	 /**
