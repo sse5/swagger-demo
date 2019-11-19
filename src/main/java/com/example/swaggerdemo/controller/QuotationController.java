@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.swaggerdemo.bean.QuotationVO;
+import com.example.swaggerdemo.bean.ResultApiAppDto;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -45,6 +46,9 @@ public class QuotationController {
 	})
 	@ResponseBody
 	public Object initQuotation(String companycode,String tradeMarket){
+		
+		ResultApiAppDto resultApiAppDto;									//返回模板
+		
 		QuotationVO q = new QuotationVO();				
 		q.setA_volume(121.775);
 		q.setAmplitude("0.56%");
@@ -60,7 +64,8 @@ public class QuotationController {
 		q.setPrev_close(8.86);
 		q.setTotalshar("72937.9440");
 		q.setTuanrate("0.24%");
-		return q;
+		resultApiAppDto = new ResultApiAppDto(0,"成功","",q);
+		return resultApiAppDto;
 		
 	}
 	
