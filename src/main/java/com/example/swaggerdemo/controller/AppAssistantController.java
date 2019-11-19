@@ -77,7 +77,8 @@ public class AppAssistantController {
     @RequestMapping(value = "/referBulletin.do", method = RequestMethod.GET)
     @ApiImplicitParams({
             @ApiImplicitParam(name="type",value="类型",paramType = "query",example="SZ"),
-            @ApiImplicitParam(name="page",value="分页参数",paramType = "query",example=""),
+            @ApiImplicitParam(name="size",value="多少条",paramType = "query",example="20"),
+            @ApiImplicitParam(name="currentPage",value="第几页",paramType = "query",example="1"),
             @ApiImplicitParam(name="typeCode",value="公告类型",paramType = "query",example=""),
             @ApiImplicitParam(name="companyCodeFilter",value="公司代码",paramType = "query",example="680002"),
             @ApiImplicitParam(name="typeDesc",value="关键字",paramType = "query",example="680002"),
