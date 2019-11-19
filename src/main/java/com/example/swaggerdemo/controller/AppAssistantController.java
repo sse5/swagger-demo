@@ -87,7 +87,7 @@ public class AppAssistantController {
 
 
     })
-    public Object referBulletin(PaginationVO page, String companyCodeFilter, String typeCode,
+    public Object referBulletin(String size,String currentPage, String companyCodeFilter, String typeCode,
                                 String typeDesc, String type, String BulleninType) {
         Map<String,Object> result = new HashMap<String,Object>();
         List<ReferBulletinVO> list = new ArrayList<ReferBulletinVO>();
@@ -141,7 +141,7 @@ public class AppAssistantController {
         result.put("type", type);
         result.put("companyCodeFilter", companyCodeFilter);
         result.put("typeDesc", typeDesc);
-        result.put("total", page.getTotalItems());
+        result.put("total", 10);
 
         return result;
     }
