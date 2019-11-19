@@ -1,5 +1,6 @@
 package com.example.swaggerdemo.controller;
 
+import com.example.swaggerdemo.bean.ResultApiAppDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -45,6 +46,7 @@ public class AppUserDefinedSentimentController {
                             Integer emotion,String orderName,String orderType,Integer queryType){
         Map<String,Object> result = new HashMap<String, Object>();
         Map<String,Object> map = new HashMap<String,Object>();
+        ResultApiAppDto resultAppApiDto;
         String json = "{\n" +
                 "  \"status\" : \"SUCCESS\",\n" +
                 "  \"result\" : {\n" +
@@ -108,7 +110,8 @@ public class AppUserDefinedSentimentController {
                 "  }\n" +
                 "}\n" +
                 "\n";
-        return json;
+        resultAppApiDto = new ResultApiAppDto(0, "成功","" ,  json);
+        return resultAppApiDto;
     }
 
 
@@ -127,6 +130,7 @@ public class AppUserDefinedSentimentController {
     public Object detail(String id){
         Map<String,Object> result = new HashMap<String, Object>();
         Map<String,Object> map = new HashMap<String,Object>();
+        ResultApiAppDto resultAppApiDto;
         String json ="{\n" +
                 "  \"status\" : \"SUCCESS\",\n" +
                 "  \"result\" : {\n" +
@@ -206,7 +210,8 @@ public class AppUserDefinedSentimentController {
                 "    } ]\n" +
                 "  }\n" +
                 "}";
-        return json;
+        resultAppApiDto = new ResultApiAppDto(0, "成功","" ,  json);
+        return resultAppApiDto;
     }
 
 
@@ -226,6 +231,7 @@ public class AppUserDefinedSentimentController {
     public Object duplicate(String id){
         Map<String,Object> result = new HashMap<String, Object>();
         Map<String,Object> map = new HashMap<String,Object>();
+        ResultApiAppDto resultAppApiDto;
         String json = "{\n" +
                 "  \"status\" : \"SUCCESS\",\n" +
                 "  \"result\" : [ {\n" +
@@ -245,7 +251,8 @@ public class AppUserDefinedSentimentController {
                 "    } ]\n" +
                 "  } ]\n" +
                 "}";
-        return json;
+        resultAppApiDto = new ResultApiAppDto(0, "成功","" ,  json);
+        return resultAppApiDto;
     }
 
 }

@@ -4,6 +4,7 @@ package com.example.swaggerdemo.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.swaggerdemo.bean.ReferBulletinVO;
+import com.example.swaggerdemo.bean.ResultApiAppDto;
 import com.example.swaggerdemo.bean.WriteBulletinVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -38,7 +39,9 @@ public class AppAssistantController {
     public Object index(String type) throws Exception {
         Map<String, Object> result = new HashMap<String, Object>();
         Map<String, Object> queryMap = new HashMap<String, Object>();
+        ResultApiAppDto resultAppApiDto;
         String json ="{\"typeList\":[{\"typeCode\":\"0807\",\"typeDesc\":\"其他类型业绩预告\"},{\"typeCode\":\"1001\",\"typeDesc\":\"异常波动\"}]}";
+        resultAppApiDto = new ResultApiAppDto(0, "成功","" ,  json);
         return json;
     }
 
@@ -59,7 +62,7 @@ public class AppAssistantController {
 
     })
     public Object selectModel(String SearchText, String type) {
-
+        ResultApiAppDto resultAppApiDto;
         Map<String, Object> param = new HashMap<String, Object>();
         String json ="[{\n" +
                 "\t\"state\": \"open\",\n" +
@@ -480,7 +483,8 @@ public class AppAssistantController {
                 "\t\"isParent\": \"1\",\n" +
                 "\t\"type\": \"SZ\"\n" +
                 "}]";
-        return json;
+        resultAppApiDto = new ResultApiAppDto(0, "成功","" ,  json);
+        return resultAppApiDto;
     }
 
     /**
@@ -508,7 +512,7 @@ public class AppAssistantController {
                                 String typeDesc, String type, String BulleninType) {
         Map<String,Object> result = new HashMap<String,Object>();
         List<ReferBulletinVO> list = new ArrayList<ReferBulletinVO>();
-
+        ResultApiAppDto resultAppApiDto;
         ReferBulletinVO vo = new ReferBulletinVO();
         vo.setBulletin_id("123123");
         vo.setBulletin_title("标题一");
@@ -559,8 +563,8 @@ public class AppAssistantController {
         result.put("companyCodeFilter", companyCodeFilter);
         result.put("typeDesc", typeDesc);
         result.put("total", 10);
-
-        return result;
+        resultAppApiDto = new ResultApiAppDto(0, "成功","" ,  result);
+        return resultAppApiDto;
     }
 
 
