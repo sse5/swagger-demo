@@ -61,7 +61,7 @@ public class AppUserDefinedSentimentController {
                 "      \"publishTime\" : \"2019-04-09 21:35:19\",\n" +
                 "      \"dupCounts\" : \"1\",\n" +
                 "      \"platform\" : \"微博\",\n" +
-                "      \"emotion\" : \"Neutral\",\n" +
+                "      \"emotion\" : \"1\",\n" +
                 "      \"source\" : \"财联社\",\n" +
                 "      \"hot\" : \"高\",\n" +
                 "      \"autoTags\" : [ {\n" +
