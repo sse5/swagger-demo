@@ -279,6 +279,229 @@ public class LawsController {
 	
 	
 	
+	/////////////////////////////////////////////////////////法律法规分页
+	@ApiOperation(value="法律法规初始化数据、按标题查询法律法规数据接口(分页)", notes="法律法规初始化数据、按标题查询法律法规数据接口(分页)")
+	@RequestMapping(value = "/allLaws/page")
+	@ApiImplicitParams({
+		@ApiImplicitParam(paramType="query", name = "userId", value = "用户ID", required = true, dataType = "String"),
+		@ApiImplicitParam(paramType="query", name = "fileName", value = "文件标题关键字", required = true, dataType = "String"),
+		@ApiImplicitParam(paramType="query", name = "currPage", value = "查询的页码", required = true, dataType = "String"),
+		@ApiImplicitParam(paramType="query", name = "pageSize", value = "每页数据条数", required = true, dataType = "String")
+	})
+	@ResponseBody
+	public Object allLawsPage(HttpServletRequest requ) {
+		Map<String,Object> result = new HashMap<String,Object>();				//结果容器
+		Map<String,Object> param = new HashMap<String,Object>();				//参数容器
+		
+		ResultApiAppDto resultApiAppDto;										//返回模板
+		//参数
+		String userId = requ.getParameter("userId").trim();						//用户ID
+		String fileName = requ.getParameter("fileName").trim();					//文件名
+		String currPage1 = requ.getParameter("currPage").trim();				//当前页
+		String pageSize1 = requ.getParameter("pageSize").trim();				//每页数据条数
+		
+		
+		//参数处理
+		int currPage = Integer.parseInt(currPage1);
+		int pageSize = Integer.parseInt(pageSize1);
+		
+		
+		if(userId == "" || userId == null) {
+			result.put("result","");
+			resultApiAppDto = new ResultApiAppDto(-1,"失败","",result);
+			return resultApiAppDto;
+		}else {
+			
+			LawVO L1 = new LawVO();
+			LawVO L2 = new LawVO();
+			
+			
+			L1.setId(1);
+			L1.setIsFavorite("1");
+			L1.setHierarchyId("19");
+			L1.setHierarchyDesc("业务通知（与公告）");
+			L1.setFileUrl("http://www.gov.cn/zhengce/2019-02/14/content_5365818.htm");
+			L1.setFilePath("/projects/data/lcinfo/upload/legal_rule/上海证券交易所上市开放式基金业务指引（2019年修订）.docx");
+			L1.setFileName("关于《期货交易管理条例》第七十条第一款第五项的规定（征求意见稿）");
+			L1.setBiztypeDesc("董监高");
+			L1.setIsTop("0");
+			L1.setUpdateTime("2019-04-17 00:00:00.0");
+			L1.setUploadDept("中华人民共和国国家税务总局");
+			
+			L2.setId(2);
+			L2.setIsFavorite("0");
+			L2.setHierarchyId("19");
+			L2.setHierarchyDesc("业务通知（与公告）");
+			L2.setFileUrl("http://www.gov.cn/zhengce/2019-02/14/content_5365818.htm");
+			L2.setFilePath("/projects/data/lcinfo/upload/legal_rule/上海证券交易所上市开放式基金业务指引（2019年修订）.docx");
+			L2.setFileName("关于《期货交易管理条例》第七十条第一款第五项的规定（征求意见稿）");
+			L2.setBiztypeDesc("董监高");
+			L2.setIsTop("0");
+			L2.setUpdateTime("2019-04-17 00:00:00.0");
+			L2.setUploadDept("中华人民共和国国家税务总局");
+			List<LawVO> list = new ArrayList<LawVO>();
+			list.add(L1);
+			list.add(L2);
+			result.put("result",list);
+			result.put("currPage",currPage);
+			result.put("pageSize",pageSize);
+			resultApiAppDto = new ResultApiAppDto(0,"成功","",result);
+			return resultApiAppDto;
+		}	
+	}
+	
+	
+	
+	@ApiOperation(value="按业务查询法律法规数据接口(分页)", notes="按业务查询法律法规数据接口(分页)")
+	@RequestMapping(value = "/baseBiztypeID/page")
+	@ApiImplicitParams({
+		@ApiImplicitParam(paramType="query", name = "userId", value = "用户ID", required = true, dataType = "String"),
+		@ApiImplicitParam(paramType="query", name = "bizTypeId", value = "业务ID", required = true, dataType = "String"),
+		@ApiImplicitParam(paramType="query", name = "currPage", value = "查询的页码", required = true, dataType = "String"),
+		@ApiImplicitParam(paramType="query", name = "pageSize", value = "每页数据条数", required = true, dataType = "String")
+	})
+	@ResponseBody
+	public Object baseBiztypeIDPage(HttpServletRequest requ) {
+		Map<String,Object> result = new HashMap<String,Object>();				//结果容器
+		Map<String,Object> param = new HashMap<String,Object>();				//参数容器
+		ResultApiAppDto resultApiAppDto;										//返回模板
+		
+		//参数
+		String userId = requ.getParameter("userId").trim();						//用户ID
+		String bizTypeId = requ.getParameter("bizTypeId").trim();				//业务Id	
+		String currPage1 = requ.getParameter("currPage").trim();				//当前页
+		String pageSize1 = requ.getParameter("pageSize").trim();				//每页数据条数
+		
+		//参数处理
+		int currPage = Integer.parseInt(currPage1);
+		int pageSize = Integer.parseInt(pageSize1);
+		
+		
+		if(userId == "" || userId == null) {
+			result.put("result","");
+			resultApiAppDto = new ResultApiAppDto(-1,"失败","",result);
+			return resultApiAppDto;
+		}else {
+			LawVO L1 = new LawVO();
+			LawVO L2 = new LawVO();
+			
+			
+			L1.setId(1);
+			L1.setIsFavorite("1");
+			L1.setHierarchyId("19");
+			L1.setHierarchyDesc("业务通知（与公告）");
+			L1.setFileUrl("http://www.gov.cn/zhengce/2019-02/14/content_5365818.htm");
+			L1.setFilePath("/projects/data/lcinfo/upload/legal_rule/上海证券交易所上市开放式基金业务指引（2019年修订）.docx");
+			L1.setFileName("关于《期货交易管理条例》第七十条第一款第五项的规定（征求意见稿）");
+			L1.setBiztypeDesc("董监高");
+			L1.setIsTop("0");
+			L1.setUpdateTime("2019-04-17 00:00:00.0");
+			L1.setUploadDept("中华人民共和国国家税务总局");
+			
+			L2.setId(2);
+			L2.setIsFavorite("0");
+			L2.setHierarchyId("19");
+			L2.setHierarchyDesc("业务通知（与公告）");
+			L2.setFileUrl("http://www.gov.cn/zhengce/2019-02/14/content_5365818.htm");
+			L2.setFilePath("/projects/data/lcinfo/upload/legal_rule/上海证券交易所上市开放式基金业务指引（2019年修订）.docx");
+			L2.setFileName("关于《期货交易管理条例》第七十条第一款第五项的规定（征求意见稿）");
+			L2.setBiztypeDesc("董监高");
+			L2.setIsTop("0");
+			L2.setUpdateTime("2019-04-17 00:00:00.0");
+			L2.setUploadDept("中华人民共和国国家税务总局");
+			List<LawVO> list = new ArrayList<LawVO>();
+			list.add(L1);
+			list.add(L2);
+			result.put("result",list);
+			result.put("currPage",currPage);
+			result.put("pageSize",pageSize);
+			resultApiAppDto = new ResultApiAppDto(0,"成功","",result);
+			return resultApiAppDto;
+		}	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	@ApiOperation(value="用户收藏的法律法规数据接口(分页)", notes="用户收藏的法律法规数据接口(分页)")
+	@RequestMapping(value="/baseUser/page")
+	@ApiImplicitParams({
+		@ApiImplicitParam(paramType="query", name = "userId", value = "用户ID", required = true, dataType = "String"),
+		@ApiImplicitParam(paramType="query", name = "isFavorite", value = "用户收藏标识(传1)", required = true, dataType = "String"),
+		@ApiImplicitParam(paramType="query", name = "currPage", value = "查询的页码", required = true, dataType = "String"),
+		@ApiImplicitParam(paramType="query", name = "pageSize", value = "每页数据条数", required = true, dataType = "String")
+	})
+	@ResponseBody
+	public Object baseUserPage(HttpServletRequest requ) {
+		Map<String,Object> result = new HashMap<String,Object>();				//结果容器
+		Map<String,Object> param = new HashMap<String,Object>();				//参数容器
+		ResultApiAppDto resultApiAppDto;										//返回模板
+		//参数
+		String userId = requ.getParameter("userId").trim();						//用户ID
+		String isFavorite = requ.getParameter("isFavorite").trim();				//用户收藏
+		String currPage1 = requ.getParameter("currPage").trim();				//当前页
+		String pageSize1 = requ.getParameter("pageSize").trim();				//每页数据条数
+		
+		//参数处理
+		int currPage = Integer.parseInt(currPage1);
+		int pageSize = Integer.parseInt(pageSize1);
+		
+		
+		if(userId == "" || userId == null) {
+			result.put("result","");
+			resultApiAppDto = new ResultApiAppDto(-1,"失败","",result);
+			return resultApiAppDto;
+		}else {
+			LawVO L1 = new LawVO();
+			LawVO L2 = new LawVO();
+			
+			
+			L1.setId(1);
+			L1.setIsFavorite("1");
+			L1.setHierarchyId("19");
+			L1.setHierarchyDesc("业务通知（与公告）");
+			L1.setFileUrl("http://www.gov.cn/zhengce/2019-02/14/content_5365818.htm");
+			L1.setFilePath("/projects/data/lcinfo/upload/legal_rule/上海证券交易所上市开放式基金业务指引（2019年修订）.docx");
+			L1.setFileName("关于《期货交易管理条例》第七十条第一款第五项的规定（征求意见稿）");
+			L1.setBiztypeDesc("董监高");
+			L1.setIsTop("0");
+			L1.setUpdateTime("2019-04-17 00:00:00.0");
+			L1.setUploadDept("中华人民共和国国家税务总局");
+			
+			L2.setId(2);
+			L2.setIsFavorite("1");
+			L2.setHierarchyId("19");
+			L2.setHierarchyDesc("业务通知（与公告）");
+			L2.setFileUrl("http://www.gov.cn/zhengce/2019-02/14/content_5365818.htm");
+			L2.setFilePath("/projects/data/lcinfo/upload/legal_rule/上海证券交易所上市开放式基金业务指引（2019年修订）.docx");
+			L2.setFileName("关于《期货交易管理条例》第七十条第一款第五项的规定（征求意见稿）");
+			L2.setBiztypeDesc("董监高");
+			L2.setIsTop("0");
+			L2.setUpdateTime("2019-04-17 00:00:00.0");
+			L2.setUploadDept("中华人民共和国国家税务总局");
+			List<LawVO> list = new ArrayList<LawVO>();
+			list.add(L1);
+			list.add(L2);
+			result.put("result",list);
+			result.put("currPage",currPage);
+			result.put("pageSize",pageSize);
+			resultApiAppDto = new ResultApiAppDto(0,"成功","",result);
+			return resultApiAppDto;
+		}	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
